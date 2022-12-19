@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Prueba de socket</title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js" integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+
+    <body>
+        <h1>Prueba de Arduino</h1>
+        <button id="on">Encender</button>
+        <button id="off">Apagar</button>
+    </body>
+    <script>
+        var socket = io();
+
+        document.getElementById('on').onclick = function(){
+            console.log("on");
+            socket.emit("led", {button:"1"});
+        }
+
+        document.getElementById('off').onclick = function(){
+            socket.emit("led", {button:"2"})
+        }
+
+        socket.on("led", (arg, callback) => {
+            console.log(arg); // "world"
+            //callback("got it");
+            });
+    </script>
+</html>

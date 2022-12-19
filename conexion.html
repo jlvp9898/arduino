@@ -1,0 +1,26 @@
+
+<html>
+    <head>
+        <title>Prueba de socket</title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js" integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+          <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <h1>Prueba de Arduino</h1>
+        
+    </body>
+    <script>
+     var socket_local = io("http://localhost:3000/", { transports : ['websocket'] });
+ 
+     var socket_server = io();
+
+     socket_server.on("led", (arg, callback) => {
+            socket_local.emit("led", arg);
+            console.log(arg); // "world"
+            //callback("got it");
+            });
+
+    </script>
+</html>
