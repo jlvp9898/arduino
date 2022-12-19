@@ -2,7 +2,7 @@ var http = require('http');
 var  fs  = require('fs');
 const path = require('path');
 var index = fs.readFileSync(path.join(__dirname, '.', '', 'index.html')).toString();
-var control = fs.readFileSync('/conexion.html');
+var control = fs.readFileSync(path.join(__dirname, '.', '', 'conexion.html')).toString();
 
   var app = http.createServer(function(req, res){
     res.writeHead(200, {'Content-Type': 'text/html'});
