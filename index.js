@@ -1,7 +1,8 @@
 var http = require('http');
 var  fs  = require('fs');
-var index = fs.readFileSync('./index.html');
-var control = fs.readFileSync('./conexion.html');
+const path = require('path');
+var index = fs.readFileSync(path.join(__dirname, '.', '', 'index.html')).toString();
+var control = fs.readFileSync('/conexion.html');
 
   var app = http.createServer(function(req, res){
     res.writeHead(200, {'Content-Type': 'text/html'});
